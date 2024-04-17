@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('topics', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->foreignId('type_id')->constrained('topic_types');
+            $table->text('description');
             $table->timestamps();
         });
     }

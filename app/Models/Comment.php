@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
+    protected $fillable = ['user_id', 'topic_id', 'body'];
+
     use HasFactory;
 
     public function user() {
@@ -16,4 +18,5 @@ class Comment extends Model
     public function topic() {
         return $this->belongsTo(Topic::class);
     }
+
 }
