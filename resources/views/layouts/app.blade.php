@@ -17,7 +17,7 @@
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
             @include('layouts.navigation')
-
+            @include('components.slide-category-tree')
             <!-- Page Heading -->
             @if (isset($header))
                 <header class="bg-white shadow">
@@ -29,7 +29,8 @@
 
             <!-- Page Content -->
             <main>
-                {{ $slot }}
+                @yield('content')
+                @include('layouts.footer')
             </main>
         </div>
     </body>

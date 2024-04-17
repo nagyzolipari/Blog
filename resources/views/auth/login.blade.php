@@ -43,5 +43,14 @@
                 {{ __('Log in') }}
             </x-primary-button>
         </div>
+        <div class="flex items-center justify-between mt-4 border-t-2 border-secondary">
+
+            <p class="order-first mt-4">
+                Még nincs fiókja?
+            </p>
+            <a href="{{ route('register') }}" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Regisztráció
+            </a>
+        </div>
     </form>
 </x-guest-layout>

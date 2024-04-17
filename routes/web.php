@@ -3,13 +3,20 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+//Route::get('/', [IndexController::class,'index'])->name('index');
+//Route::get('/index', [IndexController::class,'index']);
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/index', function () {
+    return view('index');
+})->name('index');
+
+Route::get('/blog_topics', function () {
+    return view('blog_topics');
+})->middleware(['auth', 'verified'])->name('blog_topics');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
