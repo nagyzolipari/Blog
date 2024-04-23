@@ -2,10 +2,14 @@
 
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CommentController;
+
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [IndexController::class, 'index']);
 Route::get('/index', [IndexController::class, 'index'])->name('index');
+
+Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
 
 Route::get('/blog_topics', function () {
     return view('blog_topics');

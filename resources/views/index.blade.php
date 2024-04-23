@@ -16,6 +16,21 @@
         {{ $favourite_topic }}
     @endforeach
 
+    <form action="{{ route('comments.store') }}" method="post">
+        @csrf
+        {{--        todo: ide lekérni a user id-t és a topic id-t amihez történt a kommentelés--}}
+        <label for="user_id">User ID:</label>
+        <input type="text" name="user_id" id="user_id"><br>
+
+        <label for="topic_id">Topic ID:</label>
+        <input type="text" name="topic_id" id="topic_id"><br>
+
+        <label for="body">Komment szövege:</label>
+        <textarea name="body" id="body" cols="30" rows="10"></textarea><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
     <div class="m-5 p-5">
         <div class="grid grid-cols-4 gap-4 w-max">
             <div class="w-full p-4 text-center bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">

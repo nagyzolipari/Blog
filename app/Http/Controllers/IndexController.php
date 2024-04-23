@@ -7,7 +7,6 @@ use App\Models\Topic;
 use App\Models\FavouriteTopic;
 
 
-
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 

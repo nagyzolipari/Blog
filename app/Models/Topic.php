@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Topic extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'type_id', 'description, created_at'];
+    protected $fillable = ['name', 'type_id', 'description'];
 
     public function comments() {
         return $this->hasMany(Comment::class);
