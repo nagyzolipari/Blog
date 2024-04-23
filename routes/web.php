@@ -1,18 +1,11 @@
 <?php
 
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-//Route::get('/', [IndexController::class,'index'])->name('index');
-//Route::get('/index', [IndexController::class,'index']);
-
-Route::get('/', function () {
-    return view('index');
-});
-
-Route::get('/index', function () {
-    return view('index');
-})->name('index');
+Route::get('/', [IndexController::class, 'index']);
+Route::get('/index', [IndexController::class, 'index'])->name('index');
 
 Route::get('/blog_topics', function () {
     return view('blog_topics');

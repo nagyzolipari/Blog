@@ -3,9 +3,13 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\CommentController;
+//use App\Http\Controllers\IndexController;
 
-Route::get('/comments', [CommentController::class, 'index']);
+//Route::get('/index', [IndexController::class, 'index']);
+
+use App\Http\Controllers\TopicController;
+
+Route::get('/topics', [TopicController::class, 'index']);
 
 Route::get('/user', function (Request $request) {
     return $request->user();

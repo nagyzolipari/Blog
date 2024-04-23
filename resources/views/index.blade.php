@@ -2,6 +2,20 @@
 
 @section('content')
 
+    @foreach ($comments as $comment)
+        <p>{{ $comment->body }}</p>
+        <p>{{ $comment->created_at }}</p>
+    @endforeach
+
+    @foreach($topics as $topic)
+        <li>{{ $topic->name }}</li>
+        <li>{{ $topic->created_at }}</li>
+    @endforeach
+
+    @foreach($favourite_topics as $favourite_topic)
+        {{ $favourite_topic }}
+    @endforeach
+
     <div class="m-5 p-5">
         <div class="grid grid-cols-4 gap-4 w-max">
             <div class="w-full p-4 text-center bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">

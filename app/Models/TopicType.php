@@ -9,9 +9,7 @@ class TopicType extends Model
 {
     use HasFactory;
 
-    public function comments() {
-        return $this->hasMany(Comment::class);
-    }
+    protected $fillable = ['name', 'created_at'];
 
     public function topics() {
         return $this->hasMany(Topic::class);
