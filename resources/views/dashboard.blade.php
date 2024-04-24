@@ -1,17 +1,41 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+@extends('layouts.app')
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
-        </div>
-    </div>
-</x-app-layout>
+@section('content')
+
+    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        {{ __('Dashboard') }}
+    </h2>
+
+    itt lehet megjeleneíteni a kedvenc blogtémákat
+    <br>
+    user adatok:<br>
+    @auth()
+        id: {{ Auth::user()->id }}
+        <br>
+        név: {{ Auth::user()->name }}
+    @endauth
+    <br><br>
+
+    fő topic-on bellüli al témák
+    @foreach($topics as $topic)
+        <li>{{ $topic->name }}</li>
+        <li>{{ $topic->created_at }}</li>
+    @endforeach
+    <br><br>
+
+    topic types (szűrő feltételnek is jó, alapból kiiratni minden topic-ot)
+    @foreach($topic_types as $topic_type)
+        <li>{{ $topic_type->name }}</li>
+    @endforeach
+    <br><br>
+
+    favourite topic (csak a felhasználónak megjeleníteni a saját kedvenceit)
+    + kell egy ikon/gomb amivel tudja menteni a kedvencei közé
+    ++ ehhez api
+    <br>
+    @foreach($favourite_topics as $favourite_topic)
+        {{ $favourite_topic }}
+    @endforeach
+    <br><br>
+
+@endsection

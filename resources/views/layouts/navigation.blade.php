@@ -20,11 +20,28 @@
                     <li class="grid grid-cols-1 content-center">
                         {{--    USER PROFILE MENU  --}}
                         @auth()
-                            <div class="flex justify-center md:grid md:justify-items-center pt-3 md:pt-0">
-                                <button type="button"
-                                        class="flex mr-3 text-sm md:mr-0 md:text-white hover:text-cta "
-                                        id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
-                                        data-dropdown-placement="bottom">
+                            <div class="flex justify-center pt-3 md:pt-0 text-white font-extrabold">
+                                <a href="{{route('blog')}}"
+                                   class="block px-4 py-2">
+                                    Blog
+                                </a>
+                                <a href="{{route('dashboard')}}"
+                                   class="block px-4 py-2">
+                                    Aktivitásaim
+                                </a>
+                                <a href="{{route('profile.edit')}}"
+                                   class="block px-4 py-2">
+                                    Profil
+                                </a>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <a href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();this.closest('form').submit();"
+                                       class="block px-4 py-2">
+                                        Kijelentkezés
+                                    </a>
+                                </form>
+                                <div class="flex mr-3 text-sm md:mr-0 md:text-white hover:text-cta">
                                     <svg class="w-7 h-7 mt-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0 0a8.949 8.949 0 0 0 4.951-1.488A3.987 3.987 0 0 0 11 14H9a3.987 3.987 0 0 0-3.951 3.512A8.948 8.948 0 0 0 10 19Zm3-11a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/>
                                     </svg>
@@ -36,38 +53,6 @@
                                                 {{ Auth::user()->email }}
                                         </span>
                                     </div>
-                                </button>
-                                <div class="z-50 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600">
-                                    <ul class="py-2" aria-labelledby="user-menu-button">
-                                        <li>
-                                            <a href="{{route('blog')}}"
-                                               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
-                                                Blog témák
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{route('profile.edit')}}"
-                                               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
-                                                Profil
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{route('favourite_blog')}}"
-                                               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
-                                                Kedvenc témáim
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <form method="POST" action="{{ route('logout') }}">
-                                                @csrf
-                                                <a href="{{ route('logout') }}"
-                                                   onclick="event.preventDefault();this.closest('form').submit();"
-                                                   class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
-                                                    Kijelentkezés
-                                                </a>
-                                            </form>
-                                        </li>
-                                    </ul>
                                 </div>
                             </div>
                             {{--  END USER PROFILE MENU   --}}

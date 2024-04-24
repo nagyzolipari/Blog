@@ -4,7 +4,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\BlogController;
-use App\Http\Controllers\FavouriteBlogController;
+use App\Http\Controllers\DashboardController;
 
 
 use Illuminate\Support\Facades\Route;
@@ -19,7 +19,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/blog',[BlogController::class, 'index'])->name('blog');
     Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
-    Route::get('/favourite_blog',[FavouriteBlogController::class, 'index'])->name('favourite_blog');
+    Route::get('/dashboard',[DashboardController::class, 'index'])->name('dashboard');
 
 });
 

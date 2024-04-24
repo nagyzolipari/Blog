@@ -8,11 +8,11 @@ use App\Models\TopicType;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
-class FavouriteBlogController extends Controller
+class DashboardController extends Controller
 {
     public function index():View
     {
-        return view('favourite_blog', [
+        return view('dashboard', [
                 'topics' => Topic::all(),
                 'topic_types' => TopicType::all(),
                 'favourite_topics' => FavouriteTopic::all()
