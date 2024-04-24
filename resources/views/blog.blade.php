@@ -2,7 +2,24 @@
 
 @section('content')
 
-    itt csak pár minta blog
+    itt lehet hozzáférni a témákhoz bővebben
+    <br><br>
+
+    user adatok:<br>
+    @auth()
+        id: {{ Auth::user()->id }}
+        <br>
+        név: {{ Auth::user()->name }}
+    @endauth
+    <br><br>
+
+    kommentek- válogatni minden topichoz melyik tatozik
+    +ehhez van API
+    ++ websocket új komment esetén
+    @foreach ($comments as $comment)
+        <p>{{ $comment->body }}</p>
+        <p>{{ $comment->created_at }}</p>
+    @endforeach
     <br><br>
 
     fő topic-on bellüli al témák
@@ -17,6 +34,32 @@
         <li>{{ $topic_type->name }}</li>
     @endforeach
     <br><br>
+
+    favourite topic (csak a felhasználónak megjeleníteni a saját kedvenceit)
+    + kell egy ikon/gomb amivel tudja menteni a kedvencei közé
+    ++ ehhez api
+    <br>
+    @foreach($favourite_topics as $favourite_topic)
+        {{ $favourite_topic }}
+    @endforeach
+    <br><br>
+
+    kommentform<br>
+    todo: ide lekérni a user id-t és a topic id-t amihez történt a kommentelés
+    <br>
+    <form action="{{ route('comments.store') }}" method="post">
+        @csrf
+        <label for="user_id">User ID:</label>
+        <input type="text" name="user_id" id="user_id"><br>
+
+        <label for="topic_id">Topic ID:</label>
+        <input type="text" name="topic_id" id="topic_id"><br>
+
+        <label for="body">Komment szövege:</label>
+        <textarea name="body" id="body" cols="30" rows="10"></textarea><br>
+
+        <button type="submit">Küld</button>
+    </form>
 
     <div class="m-5 p-5">
         <div class="grid grid-cols-4 gap-4 w-max">
