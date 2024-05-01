@@ -45,7 +45,7 @@ Futtasd a következő parancsokat a szükséges PHP és JavaScript függőségek
 ```
 composer install
 npm install
-npm run-script build
+npm run-script dev
 ```
 
 #### 4. Lépés: Adatbázis Migrációk és Seeder-ek
