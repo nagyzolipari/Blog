@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 
+use App\Events\NewComment;
+
 class CommentController extends Controller
 {
     public function store(Request $request)
@@ -20,6 +22,9 @@ class CommentController extends Controller
             'topic_id' => $request->topic_id,
             'body' => $request->body,
         ]);
+
+        //Új Komment Esemény Pusher által
+        event(new NewComment($comment));
 
         return response()->json($comment, 201);
     }
